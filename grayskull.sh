@@ -1,1 +1,0 @@
-grayskull pypi "https://github.com/projectmesa/mesa-geo" -o 'recipe/meta.yaml'
