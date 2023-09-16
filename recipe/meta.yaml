@@ -1,39 +1,34 @@
 {% set name = "mesa-geo" %}
-{% set version = "0.5.0" %}
-
+{% set version = "0.6.0" %}
 package:
   name: {{ name|lower }}
   version: {{ version }}
-
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/Mesa-Geo-{{ version }}.tar.gz
-  sha256: a9cdb514732138ec8638ac0c7811ee74d9586794e350b3d48df32eddf221f5df
-
+  url: https://github.com/projectmesa/mesa-geo/archive/v{{ version }}.tar.gz
+  sha256: 67a932380fc0ae8c5c31b7d6038fec9918c7883d22202c06820cbb128b423ee6
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
-
 requirements:
   host:
     - python >=3.8
     - setuptools
     - wheel
-    - mesa >=1.1.0,<1.2.dev0
+    - mesa >=2.1.0,<2.2.dev0
     - pip
   run:
     - python >=3.8
-    - mesa >=1.1.0,<1.2.dev0
+    - mesa >=2.1.0,<2.2.dev0
     - geopandas
     - libpysal
     - rtree
-    - rasterio >=1.3b1
+    - rasterio
     - shapely
     - numpy
     - pyproj
     - folium
     - xyzservices >=2022.9.0
-
 test:
   imports:
     - mesa_geo
@@ -41,13 +36,10 @@ test:
     - pip check
   requires:
     - pip
-
 about:
   home: https://github.com/projectmesa/mesa-geo
-  summary: GIS extension for the Mesa agent-based modeling framework in Python
   license: Apache-2.0
   license_file: LICENSE
-
 extra:
   recipe-maintainers:
     - adamamer20
