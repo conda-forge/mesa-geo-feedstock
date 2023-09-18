@@ -4,8 +4,8 @@ package:
   name: {{ name|lower }}
   version: {{ version }}
 source:
-  url: https://github.com/projectmesa/mesa-geo/archive/v{{ version }}.tar.gz
-  sha256: 67a932380fc0ae8c5c31b7d6038fec9918c7883d22202c06820cbb128b423ee6
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/Mesa-Geo-{{ version }}.tar.gz
+  sha256: 7eaff92c778438e5c09fbe12535506f8bfb44bd1f0fbda1dc5c60ebef7b79250
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
@@ -38,14 +38,16 @@ test:
     - pip
 about:
   home: https://github.com/projectmesa/mesa-geo
+  summary: GIS extension for the Mesa agent-based modeling framework in Python
+
   license: Apache-2.0
   license_file: LICENSE
-  summary: "GIS Extension for Mesa Agent-Based Modeling"
   description: "Mesa-Geo implements a GeoSpace that can
   host GIS-based GeoAgents, which are like normal Agents, 
   except they have a geometry attribute that is a Shapely object and a crs attribute for 
   its Coordinate Reference System. You can use Shapely directly to create arbitrary geometries, but in most cases you will want to import your geometries from a file. 
   Mesa-Geo allows you to create GeoAgents from any vector data file (e.g. shapefiles), valid GeoJSON objects or a GeoPandas GeoDataFrame."
+
 extra:
   recipe-maintainers:
     - adamamer20
