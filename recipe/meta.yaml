@@ -1,39 +1,34 @@
 {% set name = "mesa-geo" %}
-{% set version = "0.5.0" %}
-
+{% set version = "0.6.0" %}
 package:
   name: {{ name|lower }}
   version: {{ version }}
-
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/Mesa-Geo-{{ version }}.tar.gz
-  sha256: a9cdb514732138ec8638ac0c7811ee74d9586794e350b3d48df32eddf221f5df
-
+  sha256: 7eaff92c778438e5c09fbe12535506f8bfb44bd1f0fbda1dc5c60ebef7b79250
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
-
 requirements:
   host:
     - python >=3.8
     - setuptools
     - wheel
-    - mesa >=1.1.0,<1.2.dev0
+    - mesa >=2.1.0,<2.2.dev0
     - pip
   run:
     - python >=3.8
-    - mesa >=1.1.0,<1.2.dev0
+    - mesa >=2.1.0,<2.2.dev0
     - geopandas
     - libpysal
     - rtree
-    - rasterio >=1.3b1
+    - rasterio
     - shapely
     - numpy
     - pyproj
     - folium
     - xyzservices >=2022.9.0
-
 test:
   imports:
     - mesa_geo
@@ -41,12 +36,17 @@ test:
     - pip check
   requires:
     - pip
-
 about:
   home: https://github.com/projectmesa/mesa-geo
   summary: GIS extension for the Mesa agent-based modeling framework in Python
+
   license: Apache-2.0
   license_file: LICENSE
+  description: "Mesa-Geo implements a GeoSpace that can
+  host GIS-based GeoAgents, which are like normal Agents, 
+  except they have a geometry attribute that is a Shapely object and a crs attribute for 
+  its Coordinate Reference System. You can use Shapely directly to create arbitrary geometries, but in most cases you will want to import your geometries from a file. 
+  Mesa-Geo allows you to create GeoAgents from any vector data file (e.g. shapefiles), valid GeoJSON objects or a GeoPandas GeoDataFrame."
 
 extra:
   recipe-maintainers:
