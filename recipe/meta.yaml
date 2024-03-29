@@ -1,5 +1,5 @@
 {% set name = "mesa-geo" %}
-{% set version = "0.7.0" %}
+{% set version = "0.7.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/Mesa-Geo-{{ version }}.tar.gz
-  sha256: 5ae6d94bff795673e4e09ab82ca80ab04247990c72b895d5816561a9631b8ccb
+  sha256: 36a89617019d12005a5dd5b015c5e27db18f987938ff3d42378851b6c881bfc1
 
 build:
   noarch: python
